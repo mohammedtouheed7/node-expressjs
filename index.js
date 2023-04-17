@@ -15,7 +15,8 @@ const expressValidator = require('express-validator')
 app.use(express.urlencoded({ extended: true })); // to get the form-data
 app.use(express.json()); // form-data convert to json
 // app.use(cookieParser());
-app.use('/uploads', express.static('uploads'));
+// app.use('/uploads', express.static('uploads'));
+app.use('/uploads', express.static(path.join(__dirname + '/uploads')));
 //Session
 app.use(session({ 
     secret: '123456cat',

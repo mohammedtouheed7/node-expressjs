@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Products</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="container mt-3">
+            <a href="/products/list" class="btn btn-primary ml-3">Home</a>
+            <a href="/products/add" class="btn btn-secondary ml-3">New Product</a>
+            <a href="/products/list" class="btn btn-info ml-3">Product List</a>
+            <a href="/products/logout" class="btn btn-info ml-3">Logout</a>
+
+        </div>
+        <hr>
+          <% if (messages.error) { %>
+<p style="color:red"><%- messages.error %></p>
+<% } %>
+   
+<p>Hello Mr. <b><%- sess %></b></p>
+    <h2>Create Product</h2>
+
+        <form action="/products/add" method="post" name="create_products" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="exampleInputPassword1">Product Name</label>
+                <input type="text" class="form-control" name="product_name" id="product_name" value="" placeholder="Enter Product Name">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Select Category:</label>
+              <select name="category_id" id="category_id" class="form-control">
+                <option value="">Product Category</option>
+                <% if(data.length) {
+                    for(let i = 0; i< data.length; i++) { %>
+                <option value="<%= data[i]._id %>"><%= data[i].category_name %></option>
+                <% }
+                    }
+                    %>
+              </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Quantity</label>
+                <input type="text" name="quantity" class="form-control" id="quantity" aria-describedby="contactHelp"
+                    placeholder="Enter quantity" value="">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Price</label>
+                <input type="text" name="price" class="form-control" id="price" aria-describedby="contactHelp"
+                    placeholder="Enter phone no" value="">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Status</label>
+                <select name="status" id="status" class="form-control">
+                    <option value="1">Active</option>
+                    <option value="2">In-Active</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="file" name="myImage" accept="image/*" class="form-control">
+            </div>
+            <input type="submit" class="btn btn-success" value="Create">
+        </form>
+    </div>
+
+</body>
+
+</html>

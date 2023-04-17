@@ -7,7 +7,6 @@ const mongoose  = require("mongoose");
 const db = require('../libs/db_config');
 
 var CategorySchema = new mongoose.Schema({
-
     category_name :String,
     description:String,
 });

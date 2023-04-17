@@ -49,7 +49,7 @@ router.get('/add',LoggedIn.isAuthenticated,function(req, res, next){
 
     module.exports = getAllCategory = CategoryModel.find()
     .then((result) => {
-      console.log(result);
+      //console.log(result);
         res.render('createproducts',{
             title:'Add New Products',
             product_name:"",

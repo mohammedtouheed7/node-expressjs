@@ -36,7 +36,6 @@
                 <label for="exampleInputEmail1">Select Category:</label>
               <select name="category_id" id="category_id" class="form-control">
                 <option value="">Product Category</option>
-                <option value="1">Mobile</option>
                 <% if(data.length) {
                     for(let i = 0; i< data.length; i++) { %>
                 <option value="<%= data[i]._id %>"><%= data[i].category_name %></option>
